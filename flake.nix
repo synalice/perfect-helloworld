@@ -1,0 +1,60 @@
+{
+  description = "Development environment for the project";
+
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        formatter = pkgs.nixfmt-rfc-style;
+
+        packages.default = pkgs.clangStdenv.mkDerivation {
+          pname = "perfect-helloworld";
+          version = "0.1.0";
+          src = ./.;
+
+          nativeBuildInputs = [
+            pkgs.meson
+            pkgs.ninja
+          ];
+        };
+
+        devShells.default =
+          pkgs.mkShell.override
+            {
+              stdenv = pkgs.clangStdenv;
+            }
+            {
+              packages = [
+                pkgs.bash
+                pkgs.pkg-config
+                pkgs.meson
+                pkgs.mesonlsp
+                pkgs.ninja
+                pkgs.cppcheck
+                pkgs.clang-analyzer
+                pkgs.clang-tools
+                pkgs.clang
+                pkgs.python3
+                pkgs.include-what-you-use
+              ];
+
+              shellHook = ''
+                cp hooks/pre-commit .git/hooks/
+              '';
+            };
+      }
+    );
+}

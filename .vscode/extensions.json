@@ -1,0 +1,6 @@
+{
+    "recommendations": [
+        "mkhl.direnv",
+        "jnoortheen.nix-ide",
+    ],
+}

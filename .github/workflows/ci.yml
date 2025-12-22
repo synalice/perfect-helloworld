@@ -1,0 +1,78 @@
+name: Project's CI
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  native-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Enter Nix devShell
+        uses: nicknovitski/nix-develop@v1
+      
+      - name: Configure build
+        run: meson setup builddir/
+
+      - name: Build
+        run: meson compile -C builddir/
+
+      - name: Install the project
+        run: |
+          mkdir installroot
+          meson install -C builddir/ --destdir installroot
+
+      - name: Print install tree
+        run: tree builddir/installroot/
+
+  flake-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Enter Nix devShell
+        uses: nicknovitski/nix-develop@v1
+      
+      - name: Check Nix flake
+        run: nix flake check
+
+      - name: Build
+        run: nix build .
+
+      - name: Print result tree
+        run: tree result
+
+  check-code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Enter Nix devShell
+        uses: nicknovitski/nix-develop@v1
+      
+      - name: Configure build
+        run: meson setup builddir/
+
+      - name: Check code quality
+        run: ./scripts/check-code-quality.sh
