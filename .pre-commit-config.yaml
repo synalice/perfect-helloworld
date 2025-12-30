@@ -57,6 +57,7 @@ repos:
           - --suppress=missingIncludeSystem
           - --suppress=unmatchedSuppression
           - --suppress=checkersReport
+          - --suppress=unusedFunction
           - --project=builddir/compile_commands.json
         types_or: [c, header]
         pass_filenames: false
