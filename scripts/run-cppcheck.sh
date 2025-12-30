@@ -14,5 +14,6 @@ cppcheck \
     --std=c11 \
     --error-exitcode=1 \
     --suppress=missingIncludeSystem \
+    --suppress=unmatchedSuppression \
     --suppress=checkersReport \
     --project="$BUILD_DIR/compile_commands.json"
