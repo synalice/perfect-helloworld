@@ -37,14 +37,22 @@ add_project_arguments(
 subdir('include')
 subdir('src')
 
-executable(
+install_subdir(
+    'include/perfect-helloworld',
+    install_dir: get_option('includedir'),
+)
+
+lib = library(
     meson.project_name(),
-    sources: sources,
+    sources: lib_sources,
     install: true,
     include_directories: inc,
 )
 
-install_subdir(
-    'include/perfect-helloworld',
-    install_dir: get_option('includedir'),
+executable(
+    meson.project_name(),
+    link_with: lib,
+    sources: cli_sources,
+    install: true,
+    include_directories: inc,
 )
