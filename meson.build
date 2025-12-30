@@ -44,4 +44,7 @@ executable(
     include_directories: inc,
 )
 
-install_subdir('include/helloworld', install_dir: get_option('includedir'))
+install_subdir(
+    'include/perfect-helloworld',
+    install_dir: get_option('includedir'),
+)

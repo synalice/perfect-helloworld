@@ -4,42 +4,42 @@ repos:
       - id: clang-format
         name: Format code with clang-format
         language: system
-        entry: clang-format -i
+        entry: nix develop -c clang-format -i
         types_or: [c, header]
         pass_filenames: true
 
       - id: meson-format
         name: Format meson.build files
         language: system
-        entry: meson format -i
+        entry: nix develop -c meson format -i
         types_or: [meson]
         pass_filenames: true
 
       - id: nix-flake-check
         name: Format flake.nix
         language: system
-        entry: nix flake check
+        entry: nix develop -c nix flake check
         types_or: [nix]
         pass_filenames: false
 
       - id: meson-setup
         name: Setup builddir
         language: system
-        entry: meson setup builddir/
+        entry: nix develop -c meson setup builddir/
         types_or: [c, header]
         pass_filenames: false
 
       - id: iwyu
         name: Run IWYU tool
         language: system
-        entry: iwyu_tool.py -p builddir/ -o clang -- -Xiwyu --error=1
+        entry: nix develop -c iwyu_tool.py -p builddir/ -o clang -- -Xiwyu --error=1
         types_or: [c, header]
         pass_filenames: false
 
       - id: cppcheck
         name: Run cppcheck
         language: system
-        entry: cppcheck
+        entry: nix develop -c cppcheck
         args:
           - --enable=all
           - --safety
@@ -57,13 +57,13 @@ repos:
       - id: clang-tidy
         name: Run clang-tidy
         language: system
-        entry: ninja -C builddir/ clang-tidy
+        entry: nix develop -c ninja -C builddir/ clang-tidy
         types_or: [c, header]
         pass_filenames: false
 
       - id: scan-build
         name: Run scan-build
         language: system
-        entry: scripts/run-scan-build.sh
+        entry: nix develop -c scripts/run-scan-build.sh
         types_or: [c, header]
         pass_filenames: false

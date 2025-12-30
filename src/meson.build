@@ -1,1 +1,1 @@
-sources = files('helloworld.c', 'main.c')
+sources = files('main.c', 'perfect-helloworld.c')

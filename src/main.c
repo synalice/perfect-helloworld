@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 
-#include <helloworld/helloworld.h>
+#include <perfect-helloworld/perfect-helloworld.h>
 
 int main(void) {
   print_hello();
