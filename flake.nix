@@ -41,12 +41,12 @@
               stdenv = pkgs.clangStdenv;
             }
             {
+              inputsFrom = [ self.packages.${system}.default ];
+
               packages = [
                 pkgs.bash
                 pkgs.pkg-config
-                pkgs.meson
                 pkgs.mesonlsp
-                pkgs.ninja
                 pkgs.cppcheck
                 pkgs.clang-analyzer
                 pkgs.clang-tools
