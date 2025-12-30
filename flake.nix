@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: © 2025 Nikita Krasnov <nikita.nikita.krasnov@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
 {
   description = "Development environment for the project";
 
@@ -50,6 +54,7 @@
                 pkgs.python3
                 pkgs.include-what-you-use
                 pkgs.prek
+                pkgs.reuse
               ];
 
               shellHook = ''
