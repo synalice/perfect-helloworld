@@ -57,7 +57,7 @@ jobs:
       - name: Print result tree
         run: tree result
 
-  check-code-quality:
+  check-pre-commit-hooks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -74,5 +74,5 @@ jobs:
       - name: Configure build
         run: meson setup builddir/
 
-      - name: Check code quality
-        run: ./scripts/check-code-quality.sh
+      - name: Check pre-commit hooks
+        run: prek run

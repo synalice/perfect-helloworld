@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -o errexit
-set -o nounset
-set -o pipefail
-
-nix develop --set-env-var CI true -c scripts/check-code-quality.sh

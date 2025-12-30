@@ -49,10 +49,11 @@
                 pkgs.clang
                 pkgs.python3
                 pkgs.include-what-you-use
+                pkgs.prek
               ];
 
               shellHook = ''
-                cp hooks/pre-commit .git/hooks/
+                prek install
               '';
             };
       }

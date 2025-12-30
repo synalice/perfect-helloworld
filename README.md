@@ -27,12 +27,6 @@ To setup your environment for developing this project run these commands:
     nix develop
     ```
 
-1. Install pre-commit hook.
-
-    ```bash
-    cp hooks/pre-commit .git/hooks/
-    ```
-
 1. Setup Meson `builddir/`.
 
     ```bash
