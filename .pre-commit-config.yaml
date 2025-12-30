@@ -16,11 +16,18 @@ repos:
         pass_filenames: true
 
       - id: nix-flake-check
-        name: Format flake.nix
+        name: Lint flake.nix
         language: system
         entry: nix develop -c nix flake check
         types_or: [nix]
         pass_filenames: false
+
+      - id: nix-fmt
+        name: Format flake.nix
+        language: system
+        entry: nix develop -c nix fmt
+        types_or: [nix]
+        pass_filenames: true
 
       - id: meson-setup
         name: Setup builddir
