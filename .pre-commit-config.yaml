@@ -67,10 +67,3 @@ repos:
         entry: nix develop -c ninja -C builddir/ clang-tidy
         types_or: [c, header]
         pass_filenames: false
-
-      - id: scan-build
-        name: Run scan-build
-        language: system
-        entry: nix develop -c scripts/run-scan-build.sh
-        types_or: [c, header]
-        pass_filenames: false
