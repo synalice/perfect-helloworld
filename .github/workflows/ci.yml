@@ -56,22 +56,19 @@ jobs:
         run: nix flake check
 
       - name: Build $out output
-        run: nix build .
-
-      - name: Print $out output tree
-        run: tree result
+        run: |
+          nix build .
+          tree result
 
       - name: Build $dev output
-        run: nix build .#packages.x86_64-linux.default.dev
-
-      - name: Print $dev output tree
-        run: tree result-dev
+        run: |
+          nix build .#packages.x86_64-linux.default.dev
+          tree result-dev
 
       - name: Build $doc output
-        run: nix build .#packages.x86_64-linux.default.doc
-
-      - name: Print $doc output tree
-        run: tree result-doc
+        run: |
+          nix build .#packages.x86_64-linux.default.doc
+          tree result-doc
 
   check-pre-commit-hooks:
     runs-on: ubuntu-latest
