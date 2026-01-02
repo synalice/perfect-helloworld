@@ -55,6 +55,7 @@
                 pkgs.include-what-you-use
                 pkgs.prek
                 pkgs.reuse
+                pkgs.tree
               ];
 
               shellHook = ''
