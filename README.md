@@ -19,6 +19,8 @@ engineering discipline!
 - MIT license;
 - GitHub Actions CI;
 - Good C project structure;
+- VS Code support;
+- [Clangd VS Code extension] support;
 
 ## Getting Started
 
@@ -68,3 +70,4 @@ This project is under the [MIT] license.
 [REUSE]: https://reuse.software/
 [direnv]: https://direnv.net/#getting-started
 [cppcheck]: https://en.wikipedia.org/wiki/Cppcheck
+[Clangd VS Code extension]: https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd
