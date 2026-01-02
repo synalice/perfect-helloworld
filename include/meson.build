@@ -3,3 +3,5 @@
 # SPDX-License-Identifier: MIT
 
 inc = include_directories('.')
+
+headers = files('perfect-helloworld.h')

@@ -4,6 +4,6 @@
 
 #include <stdio.h>
 
-#include "perfect-helloworld/perfect-helloworld.h"
+#include "perfect-helloworld.h"
 
 void print_hello(void) { printf("Hello, World!"); }

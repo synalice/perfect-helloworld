@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-#include <perfect-helloworld/perfect-helloworld.h>
+#include "perfect-helloworld.h"
 
 int main(void) {
   print_hello();

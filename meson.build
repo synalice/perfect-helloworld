@@ -41,10 +41,7 @@ add_project_arguments(
 subdir('include')
 subdir('src')
 
-install_subdir(
-    'include/perfect-helloworld',
-    install_dir: get_option('includedir'),
-)
+install_headers(headers, subdir: meson.project_name())
 
 lib = library(
     meson.project_name(),
