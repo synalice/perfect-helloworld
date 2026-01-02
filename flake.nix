@@ -29,10 +29,26 @@
           version = "0.1.0";
           src = ./.;
 
+          mesonFlags = [ "-Ddocs=true" ];
+
+          outputs = [
+            "out"
+            "dev"
+            "doc"
+          ];
+
           nativeBuildInputs = [
             pkgs.meson
             pkgs.ninja
+            pkgs.doxygen
           ];
+
+          meta = {
+            homepage = "https://github.com/synalice/perfect-helloworld";
+            license = [ pkgs.lib.licenses.mit ];
+            mainProgram = "perfect-helloworld";
+          };
+
         };
 
         devShells.default =
@@ -58,7 +74,6 @@
                 pkgs.tree
                 pkgs.jq
                 pkgs.moreutils
-                pkgs.doxygen
                 pkgs.uv
               ];
 

@@ -5,7 +5,7 @@
 project(
     'perfect-helloworld',
     'c',
-    version: '0.1.0',
+    version: '1.0.0',
     license: 'MIT',
     license_files: ['LICENSE'],
     meson_version: '>=1.9.1',
@@ -52,6 +52,7 @@ lib = library(
     sources: lib_sources,
     install: true,
     include_directories: inc,
+    version: meson.project_version(),
 )
 
 pkgconfig.generate(
