@@ -59,6 +59,7 @@
                 pkgs.jq
                 pkgs.moreutils
                 pkgs.doxygen
+                pkgs.uv
               ];
 
               shellHook = ''
