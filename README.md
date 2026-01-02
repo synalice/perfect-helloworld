@@ -3,7 +3,24 @@
 A reference-grade C helloworld project. Prints "Hello, World!" with maximal
 engineering discipline!
 
-## Contributing
+## Features
+
+- Meson build system;
+- Development environment via Nix devShell;
+- Pre-commit hooks:
+  - `clang-format`
+  - `clang-tidy`
+  - `meson format`
+  - `nix flake check`
+  - `nix fmt`
+  - [IWYU]
+  - [cppcheck]
+  - [REUSE]
+- MIT license;
+- GitHub Actions CI;
+- Good C project structure;
+
+## Getting Started
 
 To setup your environment for developing this project run these commands:
 
@@ -46,5 +63,8 @@ You are good to go!
 This project is under the [MIT] license.
 
 [Nix]: https://nixos.org/download
-[direnv]: https://direnv.net/#getting-started
 [MIT]: https://opensource.org/license/mit
+[IWYU]: https://include-what-you-use.org/
+[REUSE]: https://reuse.software/
+[direnv]: https://direnv.net/#getting-started
+[cppcheck]: https://en.wikipedia.org/wiki/Cppcheck
