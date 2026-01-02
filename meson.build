@@ -17,6 +17,10 @@ project(
     ],
 )
 
+description = 'A reference-grade C helloworld project'
+
+pkgconfig = import('pkgconfig')
+
 add_project_arguments(
     '-pedantic',
     '-Wshadow',
@@ -50,6 +54,12 @@ lib = library(
     include_directories: inc,
 )
 
+pkgconfig.generate(
+    lib,
+    description: description,
+    license: meson.project_license().get(0),
+)
+
 executable(
     meson.project_name(),
     link_with: lib,
@@ -64,6 +74,7 @@ if get_option('docs')
     doc_config = configuration_data()
     doc_config.set('PROJECT_NAME', meson.project_name())
     doc_config.set('builddir', meson.current_source_dir())
+    doc_config.set('description', description)
 
     doxyfile = configure_file(
         input: 'Doxyfile.in',

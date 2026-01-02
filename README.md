@@ -24,6 +24,7 @@ Prints "Hello, World!" with maximal engineering discipline!
 - VS Code support;
 - [Clangd VS Code extension] support;
 - Doxygen support;
+- Pkg-config support (generates `.pc` file);
 
 ## Getting Started
 
