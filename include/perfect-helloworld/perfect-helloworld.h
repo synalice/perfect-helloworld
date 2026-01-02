@@ -2,7 +2,11 @@
 //
 // SPDX-License-Identifier: MIT
 
+/** @file */
+
 #pragma once
 
-/// @brief Print "Hello, World!" and exit
+/**
+ * @brief Print "Hello, World!" and exit
+ */
 void print_hello(void);

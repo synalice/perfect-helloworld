@@ -1,7 +1,8 @@
 # perfect-helloworld
 
-A reference-grade C helloworld project. Prints "Hello, World!" with maximal
-engineering discipline!
+A reference-grade C helloworld project.
+
+Prints "Hello, World!" with maximal engineering discipline!
 
 ## Features
 
@@ -22,6 +23,7 @@ engineering discipline!
 - VS Code support;
 - [Clangd VS Code extension] support;
 - Formats JSON files with [jq];
+- Doxygen support;
 
 ## Getting Started
 

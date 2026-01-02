@@ -5,4 +5,6 @@
 /builddir
 /buildscan
 /result
+/doxygen_output
+
 /.direnv
