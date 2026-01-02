@@ -21,6 +21,7 @@ engineering discipline!
 - Good C project structure;
 - VS Code support;
 - [Clangd VS Code extension] support;
+- Formats JSON files with [jq];
 
 ## Getting Started
 
@@ -64,6 +65,7 @@ You are good to go!
 
 This project is under the [MIT] license.
 
+[jq]: https://jqlang.org/
 [Nix]: https://nixos.org/download
 [MIT]: https://opensource.org/license/mit
 [IWYU]: https://include-what-you-use.org/

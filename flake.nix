@@ -56,6 +56,8 @@
                 pkgs.prek
                 pkgs.reuse
                 pkgs.tree
+                pkgs.jq
+                pkgs.moreutils
               ];
 
               shellHook = ''

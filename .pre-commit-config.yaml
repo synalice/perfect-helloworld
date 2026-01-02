@@ -12,6 +12,13 @@ repos:
         types_or: [c, header]
         pass_filenames: true
 
+      - id: json-format
+        name: Format JSON files with jq
+        language: system
+        entry: nix develop -c scripts/fmt_json.sh
+        types_or: [json]
+        pass_filenames: true
+
       - id: meson-format
         name: Format meson.build files
         language: system
