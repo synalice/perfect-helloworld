@@ -17,12 +17,12 @@ Prints "Hello, World!" with maximal engineering discipline!
   - [IWYU]
   - [cppcheck]
   - [REUSE]
+  - Formatting JSON files with [jq];
 - MIT license;
 - GitHub Actions CI;
 - Good C project structure;
 - VS Code support;
 - [Clangd VS Code extension] support;
-- Formats JSON files with [jq];
 - Doxygen support;
 
 ## Getting Started
