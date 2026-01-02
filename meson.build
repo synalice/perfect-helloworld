@@ -57,3 +57,27 @@ executable(
     install: true,
     include_directories: inc,
 )
+
+if get_option('docs')
+    doxygen = find_program('doxygen', required: true)
+
+    doc_config = configuration_data()
+    doc_config.set('PROJECT_NAME', meson.project_name())
+    doc_config.set('builddir', meson.current_source_dir())
+
+    doxyfile = configure_file(
+        input: 'Doxyfile.in',
+        output: 'Doxyfile',
+        configuration: doc_config,
+    )
+
+    custom_target(
+        'doxygen',
+        input: [headers, doxyfile],
+        output: ['html'],
+        command: [doxygen, doxyfile],
+        install_dir: get_option('datadir') / 'doc' / meson.project_name(),
+        install: true,
+        build_by_default: true,
+    )
+endif
