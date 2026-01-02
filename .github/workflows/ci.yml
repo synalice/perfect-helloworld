@@ -20,10 +20,10 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Enter Nix devShell
         uses: nicknovitski/nix-develop@v1
-      
+
       - name: Configure build
         run: meson setup builddir/
 
@@ -48,18 +48,30 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Enter Nix devShell
         uses: nicknovitski/nix-develop@v1
-      
+
       - name: Check Nix flake
         run: nix flake check
 
-      - name: Build
+      - name: Build $out output
         run: nix build .
 
-      - name: Print result tree
+      - name: Print $out output tree
         run: tree result
+
+      - name: Build $dev output
+        run: nix build .#packages.x86_64-linux.default.dev
+
+      - name: Print $dev output tree
+        run: tree result-dev
+
+      - name: Build $doc output
+        run: nix build .#packages.x86_64-linux.default.doc
+
+      - name: Print $doc output tree
+        run: tree result-doc
 
   check-pre-commit-hooks:
     runs-on: ubuntu-latest
@@ -71,10 +83,10 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Enter Nix devShell
         uses: nicknovitski/nix-develop@v1
-      
+
       - name: Configure build
         run: meson setup builddir/
 

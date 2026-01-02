@@ -48,7 +48,6 @@
             license = [ pkgs.lib.licenses.mit ];
             mainProgram = "perfect-helloworld";
           };
-
         };
 
         devShells.default =

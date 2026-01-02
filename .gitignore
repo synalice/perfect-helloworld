@@ -5,6 +5,8 @@
 /builddir
 /buildscan
 /result
+/result-dev
+/result-doc
 /doxygen-output
 
 /.direnv
