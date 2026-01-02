@@ -72,8 +72,8 @@
                 pkgs.reuse
                 pkgs.tree
                 pkgs.jq
-                pkgs.moreutils
-                pkgs.uv
+                pkgs.moreutils # needed for the `sponge` binary
+                pkgs.uv # some of the pre-commit hooks invoke it
               ];
 
               shellHook = ''
