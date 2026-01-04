@@ -7,6 +7,6 @@
 #pragma once
 
 /**
- * @brief Print "Hello, World!" and exit
+ * @brief Print "Hello, World!\n" and exit
  */
 void print_hello(void);
