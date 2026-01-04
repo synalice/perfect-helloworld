@@ -8,3 +8,5 @@ option(
     value: false,
     description: 'Build and install API documentation',
 )
+
+option('tests', type: 'feature', value: 'enabled', description: 'Build tests')

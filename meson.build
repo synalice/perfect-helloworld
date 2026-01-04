@@ -42,7 +42,7 @@ add_project_arguments(
     language: 'c',
 )
 
-unity = dependency('unity')
+unity = dependency('unity', required: get_option('tests'))
 
 subdir('include')
 subdir('src')
@@ -57,7 +57,9 @@ lib = library(
     version: meson.project_version(),
 )
 
-subdir('tests')
+if get_option('tests').enabled()
+    subdir('tests')
+endif
 
 pkgconfig.generate(
     lib,
