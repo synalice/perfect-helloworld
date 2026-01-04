@@ -9,5 +9,12 @@ set -o nounset
 set -o pipefail
 
 for file in "$@"; do
-  jq . "$file" | sponge "$file"
+  out="$file.fmt"
+
+  if jq . "$file" >"$out"; then
+    mv "$out" "$file"
+  else
+    rm -f "$out"
+    exit 1
+  fi
 done
