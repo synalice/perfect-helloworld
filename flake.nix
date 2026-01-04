@@ -20,45 +20,11 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        lib = nixpkgs.legacyPackages.${system}.lib;
       in
       {
         formatter = pkgs.nixfmt-rfc-style;
 
-        packages.default = pkgs.clangStdenv.mkDerivation {
-          pname = "perfect-helloworld";
-          version = "0.1.0";
-          src = ./.;
-
-          mesonFlags = [
-            (lib.strings.mesonEnable "docs" true)
-          ];
-
-          doCheck = true;
-
-          outputs = [
-            "out"
-            "dev"
-            "doc"
-          ];
-
-          nativeBuildInputs = [
-            pkgs.meson
-            pkgs.ninja
-            pkgs.doxygen
-            pkgs.pkg-config
-          ];
-
-          buildInputs = [
-            pkgs.unity-test
-          ];
-
-          meta = {
-            homepage = "https://github.com/synalice/perfect-helloworld";
-            license = [ lib.licenses.mit ];
-            mainProgram = "perfect-helloworld";
-          };
-        };
+        packages.default = pkgs.callPackage ./nix/perfect-helloworld.nix { };
 
         devShells.default =
           pkgs.mkShell.override
