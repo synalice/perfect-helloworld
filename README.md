@@ -8,6 +8,14 @@ Prints "Hello, World!" with maximal engineering discipline!
 
 - Meson build system;
 - Development environment via Nix devShell;
+- MIT license;
+- GitHub Actions CI;
+- Standard project structure (`docs/`, `include/`, `src/`, `tests/`, `scripts/`);
+- VS Code support;
+- `llvm-vs-code-extensions.vscode-clangd` instead of `ms-vscode.cpptools`;
+- Doxygen support;
+- Pkg-config support (generates `.pc` file);
+- Unit tests via [Unity] testing framework;
 - Pre-commit hooks:
   - `clang-format`
   - `clang-tidy`
@@ -18,14 +26,6 @@ Prints "Hello, World!" with maximal engineering discipline!
   - [cppcheck]
   - [REUSE]
   - Formatting JSON files with [jq];
-- MIT license;
-- GitHub Actions CI;
-- Good C project structure;
-- VS Code support;
-- [Clangd VS Code extension] support;
-- Doxygen support;
-- Pkg-config support (generates `.pc` file);
-- Unit tests via [Unity] testing framework;
 
 ## Getting Started
 
@@ -77,4 +77,3 @@ This project is under the [MIT] license.
 [REUSE]: https://reuse.software/
 [direnv]: https://direnv.net/#getting-started
 [cppcheck]: https://en.wikipedia.org/wiki/Cppcheck
-[Clangd VS Code extension]: https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-clangd
