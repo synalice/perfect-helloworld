@@ -6,3 +6,4 @@ BasedOnStyle: LLVM
 LineEnding: LF
 ReflowComments: false
 ColumnLimit: 0
+IndentWidth: 4
