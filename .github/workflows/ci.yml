@@ -11,7 +11,16 @@ on:
 
 jobs:
   native-build:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            name: x86_64-linux
+          - runner: ubuntu-24.04-arm
+            name: aarch64-linux
+    name: 'native-build: ${{ matrix.name }}'
+    runs-on: ${{ matrix.runner }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v5
