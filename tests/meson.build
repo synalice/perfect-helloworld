@@ -2,13 +2,16 @@
 #
 # SPDX-License-Identifier: MIT
 
-test(
-    'test-perfect-helloworld',
-    executable(
+if get_option('tests').enabled()
+    unity = dependency('unity', required: get_option('tests'))
+
+    test(
         'test-perfect-helloworld',
-        sources: files('test-perfect-helloworld.c'),
-        dependencies: unity,
-        link_with: lib,
-        include_directories: inc,
-    ),
-)
+        executable(
+            'test-perfect-helloworld',
+            sources: files('test-perfect-helloworld.c') + lib_sources,
+            dependencies: unity,
+            include_directories: inc,
+        ),
+    )
+endif

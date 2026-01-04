@@ -5,3 +5,5 @@
 inc = include_directories('.')
 
 headers = files('perfect-helloworld.h')
+
+install_headers(headers, subdir: meson.project_name())

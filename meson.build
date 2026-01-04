@@ -18,9 +18,7 @@ project(
 )
 
 description = 'A reference-grade C helloworld project'
-
 pkgconfig = import('pkgconfig')
-
 project_root = meson.current_source_dir()
 
 add_project_arguments(
@@ -44,13 +42,11 @@ add_project_arguments(
     language: 'c',
 )
 
-unity = dependency('unity', required: get_option('tests'))
 
 subdir('include')
 subdir('src')
 subdir('docs')
-
-install_headers(headers, subdir: meson.project_name())
+subdir('tests')
 
 lib = library(
     meson.project_name(),
@@ -59,10 +55,6 @@ lib = library(
     include_directories: inc,
     version: meson.project_version(),
 )
-
-if get_option('tests').enabled()
-    subdir('tests')
-endif
 
 pkgconfig.generate(
     lib,
