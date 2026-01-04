@@ -42,6 +42,8 @@ add_project_arguments(
     language: 'c',
 )
 
+unity = dependency('unity')
+
 subdir('include')
 subdir('src')
 
@@ -54,6 +56,8 @@ lib = library(
     include_directories: inc,
     version: meson.project_version(),
 )
+
+subdir('tests')
 
 pkgconfig.generate(
     lib,

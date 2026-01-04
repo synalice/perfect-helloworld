@@ -72,8 +72,11 @@
                 pkgs.reuse
                 pkgs.tree
                 pkgs.jq
+
                 # pre-commit hooks from https://github.com/pre-commit/pre-commit-hooks repo invoke it
                 pkgs.uv
+
+                pkgs.unity-test
               ];
 
               shellHook = ''

@@ -25,6 +25,7 @@ Prints "Hello, World!" with maximal engineering discipline!
 - [Clangd VS Code extension] support;
 - Doxygen support;
 - Pkg-config support (generates `.pc` file);
+- Unit tests via [Unity] testing framework;
 
 ## Getting Started
 
@@ -72,6 +73,7 @@ This project is under the [MIT] license.
 [Nix]: https://nixos.org/download
 [MIT]: https://opensource.org/license/mit
 [IWYU]: https://include-what-you-use.org/
+[Unity]: https://www.throwtheswitch.org/unity
 [REUSE]: https://reuse.software/
 [direnv]: https://direnv.net/#getting-started
 [cppcheck]: https://en.wikipedia.org/wiki/Cppcheck
