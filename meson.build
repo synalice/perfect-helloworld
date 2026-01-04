@@ -75,7 +75,7 @@ executable(
     include_directories: inc,
 )
 
-if get_option('docs')
+if get_option('docs').enabled()
     doxygen = find_program('doxygen', required: true)
 
     doc_config = configuration_data()

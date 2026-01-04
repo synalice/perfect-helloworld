@@ -4,8 +4,8 @@
 
 option(
     'docs',
-    type: 'boolean',
-    value: false,
+    type: 'feature',
+    value: 'disabled',
     description: 'Build and install API documentation',
 )
 

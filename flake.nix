@@ -20,6 +20,7 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        lib = nixpkgs.legacyPackages.${system}.lib;
       in
       {
         formatter = pkgs.nixfmt-rfc-style;
@@ -29,7 +30,9 @@
           version = "0.1.0";
           src = ./.;
 
-          mesonFlags = [ "-Ddocs=true" ];
+          mesonFlags = [
+            (lib.strings.mesonEnable "docs" true)
+          ];
 
           outputs = [
             "out"
@@ -47,7 +50,7 @@
 
           meta = {
             homepage = "https://github.com/synalice/perfect-helloworld";
-            license = [ pkgs.lib.licenses.mit ];
+            license = [ lib.licenses.mit ];
             mainProgram = "perfect-helloworld";
           };
         };
