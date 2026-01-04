@@ -7,15 +7,15 @@ Prints "Hello, World!" with maximal engineering discipline!
 ## Features
 
 - Meson build system;
-- Development environment via Nix devShell;
+- Cross-compilation support;
+- Nix flake for dependency management;
 - MIT license;
 - GitHub Actions CI;
 - Standard project structure (`docs/`, `include/`, `src/`, `tests/`, `scripts/`);
-- VS Code support;
-- `llvm-vs-code-extensions.vscode-clangd` instead of `ms-vscode.cpptools`;
+- Supports `llvm-vs-code-extensions.vscode-clangd` instead of `ms-vscode.cpptools`;
 - Doxygen support;
-- Pkg-config support (generates `.pc` file);
-- Unit tests via [Unity] testing framework;
+- Pkg-config (generates `.pc` file);
+- Unit testing support via [Unity] testing framework;
 - Pre-commit hooks:
   - `clang-format`
   - `clang-tidy`
@@ -27,7 +27,7 @@ Prints "Hello, World!" with maximal engineering discipline!
   - [REUSE]
   - Formatting JSON files with [jq];
 
-## Getting Started
+## Getting started
 
 To setup your environment for developing this project run these commands:
 
@@ -73,15 +73,16 @@ To cross-compile the project, run this script:
 ./scripts/cross-compile.sh aarch64-multiplatform out
 ```
 
-Invoking it for the first time make take some time, because Nix will download or
-build some parts of the cross toolchain.
+> [!WARNING]\
+> Invoking it for the first time make take some time, because Nix will download or
+> build some parts of the cross toolchain.
 
-> [!NOTE]\
+> [!TIP]\
 > To cross-compile for different host architectures replace
 > `aarch64-multiplatform` with `riscv64` or something else. [Read more
 > here](https://nix.dev/tutorials/cross-compilation.html#choosing-the-host-platform-with-nix).
 
-> [!NOTE]\
+> [!TIP]\
 > To build dev or doc derivation (package) replace `out` with `dev` or `doc`.
 
 ## License
