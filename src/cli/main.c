@@ -5,6 +5,6 @@
 #include "perfect-helloworld.h"
 
 int main(void) {
-  print_hello();
-  return 0;
+    print_hello();
+    return 0;
 }

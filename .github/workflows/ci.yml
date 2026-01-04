@@ -41,7 +41,7 @@ jobs:
       - name: Print install tree
         run: tree builddir/installroot/
 
-  flake-build:
+  nix-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -60,7 +60,7 @@ jobs:
 
       - name: Build $out output
         run: |
-          nix build .
+          nix build .#packages.x86_64-linux.default
           tree result
 
       - name: Build $dev output
@@ -73,7 +73,7 @@ jobs:
           nix build .#packages.x86_64-linux.default.doc
           tree result-doc
 
-  check-pre-commit-hooks:
+  run-pre-commit-hooks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -90,5 +90,5 @@ jobs:
       - name: Configure build
         run: meson setup builddir/
 
-      - name: Check pre-commit hooks
-        run: prek run
+      - name: Run pre-commit hooks
+        run: prek run --all-files
