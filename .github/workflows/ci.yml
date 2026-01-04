@@ -16,13 +16,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enter Nix devShell
-        uses: nicknovitski/nix-develop@v1
+      - name: Setup Nix
+        uses: ./.github/actions/nix-setup
 
       - name: Configure build
         run: meson setup builddir/
@@ -47,13 +42,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enter Nix devShell
-        uses: nicknovitski/nix-develop@v1
+      - name: Setup Nix
+        uses: ./.github/actions/nix-setup
 
       - name: Check Nix flake
         run: nix flake check
@@ -79,13 +69,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enter Nix devShell
-        uses: nicknovitski/nix-develop@v1
+      - name: Setup Nix
+        uses: ./.github/actions/nix-setup
 
       - name: Configure build
         run: meson setup builddir/
