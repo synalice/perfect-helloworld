@@ -41,6 +41,8 @@
             pkgs.meson
             pkgs.ninja
             pkgs.doxygen
+            pkgs.pkg-config
+            pkgs.unity-test
           ];
 
           meta = {
@@ -60,7 +62,6 @@
 
               packages = [
                 pkgs.bash
-                pkgs.pkg-config
                 pkgs.mesonlsp
                 pkgs.cppcheck
                 pkgs.clang-analyzer
@@ -75,8 +76,6 @@
 
                 # pre-commit hooks from https://github.com/pre-commit/pre-commit-hooks repo invoke it
                 pkgs.uv
-
-                pkgs.unity-test
               ];
 
               shellHook = ''
