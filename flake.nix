@@ -34,6 +34,8 @@
             (lib.strings.mesonEnable "docs" true)
           ];
 
+          doCheck = true;
+
           outputs = [
             "out"
             "dev"
