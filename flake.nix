@@ -47,6 +47,9 @@
             pkgs.ninja
             pkgs.doxygen
             pkgs.pkg-config
+          ];
+
+          buildInputs = [
             pkgs.unity-test
           ];
 
