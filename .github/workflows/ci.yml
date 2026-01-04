@@ -10,69 +10,36 @@ on:
       - main
 
 jobs:
-  native-build:
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - runner: ubuntu-24.04
-            name: x86_64-linux
-          - runner: ubuntu-24.04-arm
-            name: aarch64-linux
-    name: 'native-build: ${{ matrix.name }}'
-    runs-on: ${{ matrix.runner }}
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v5
+  build-native-x86_64:
+    uses: ./.github/workflows/build.yml
+    with:
+      runner: ubuntu-24.04
+      target: x86_64-linux
+      job-name: 'Native build: x86_64-linux'
 
-      - name: Setup Nix
-        uses: ./.github/actions/nix-setup
+  build-native-aarch64:
+    uses: ./.github/workflows/build.yml
+    with:
+      runner: ubuntu-24.04-arm
+      target: aarch64-linux
+      job-name: 'Native build: aarch64-linux'
 
-      - name: Configure build
-        run: meson setup builddir/
+  build-cross-x86_64-to-aarch64:
+    uses: ./.github/workflows/build.yml
+    with:
+      runner: ubuntu-24.04
+      target: aarch64-linux
+      job-name: 'Cross build: x86_64-linux -> aarch64-linux'
 
-      - name: Build
-        run: meson compile -C builddir/
-
-      - name: Test
-        run: meson test -C builddir/
-
-      - name: Install the project
-        run: |
-          mkdir installroot
-          meson install -C builddir/ --destdir installroot
-
-      - name: Print install tree
-        run: tree builddir/installroot/
-
-  nix-build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v5
-
-      - name: Setup Nix
-        uses: ./.github/actions/nix-setup
-
-      - name: Check Nix flake
-        run: nix flake check
-
-      - name: Build $out output
-        run: |
-          nix build .#packages.x86_64-linux.default
-          tree result
-
-      - name: Build $dev output
-        run: |
-          nix build .#packages.x86_64-linux.default.dev
-          tree result-dev
-
-      - name: Build $doc output
-        run: |
-          nix build .#packages.x86_64-linux.default.doc
-          tree result-doc
+  build-cross-aarch64-to-x86_64:
+    uses: ./.github/workflows/build.yml
+    with:
+      runner: ubuntu-24.04-arm
+      target: x86_64-linux
+      job-name: 'Cross build: aarch64-linux -> x86_64-linux'
 
   run-pre-commit-hooks:
+    name: Run pre-commit hooks
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo

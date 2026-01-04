@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: © 2026 Nikita Krasnov <nikita.nikita.krasnov@gmail.com>
+#
+# SPDX-License-Identifier: MIT
+
+name: Build (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      runner:
+        required: true
+        type: string
+      target:
+        required: true
+        type: string
+      job-name:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: ${{ inputs.job-name }}
+    runs-on: ${{ inputs.runner }}
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Nix
+        uses: ./.github/actions/nix-setup
+
+      - name: Build $out output
+        run: |
+          nix build .#packages.${{ inputs.target }}.default
+          tree result
+
+      - name: Build $dev output
+        run: |
+          nix build .#packages.${{ inputs.target }}.default.dev
+          tree result-dev
+
+      - name: Build $doc output
+        run: |
+          nix build .#packages.${{ inputs.target }}.default.doc
+          tree result-doc
