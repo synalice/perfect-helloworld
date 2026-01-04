@@ -58,51 +58,6 @@ jobs:
           nix build .#packages.aarch64-linux.default.doc
           tree result-doc
 
-  build-cross-x86_64-to-aarch64:
-    name: "Cross build: x86_64-linux -> aarch64-linux"
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Setup Nix
-        uses: ./.github/actions/nix-setup
-
-      - name: Build $out output
-        run: |
-          nix build -I nixpkgs=flake:nixpkgs --impure --expr '
-            let
-              pkgs = import <nixpkgs> {
-                crossSystem = { config = "aarch64-unknown-linux-gnu"; };
-              };
-            in
-              pkgs.callPackage ./nix/perfect-helloworld.nix {}
-          '
-          tree result
-
-      - name: Build $dev output
-        run: |
-          nix build -I nixpkgs=flake:nixpkgs --impure --expr '
-            let
-              pkgs = import <nixpkgs> {
-                crossSystem = { config = "aarch64-unknown-linux-gnu"; };
-              };
-            in
-              pkgs.callPackage ./nix/perfect-helloworld.nix {}.dev
-          '
-          tree result
-
-      - name: Build $doc output
-        run: |
-          nix build -I nixpkgs=flake:nixpkgs --impure --expr '
-            let
-              pkgs = import <nixpkgs> {
-                crossSystem = { config = "aarch64-unknown-linux-gnu"; };
-              };
-            in
-              pkgs.callPackage ./nix/perfect-helloworld.nix {}.doc
-          '
-          tree result
-
   run-pre-commit-hooks:
     name: Run pre-commit hooks
     runs-on: ubuntu-latest

@@ -65,6 +65,25 @@ To setup your environment for developing this project run these commands:
 
 You are good to go!
 
+## Cross-compilation
+
+To cross-compile the project, run this script:
+
+```bash
+./scripts/cross-compile.sh aarch64-multiplatform out
+```
+
+Invoking it for the first time make take some time, because Nix will download or
+build some parts of the cross toolchain.
+
+> [!NOTE]\
+> To cross-compile for different host architectures replace
+> `aarch64-multiplatform` with `riscv64` or something else. [Read more
+> here](https://nix.dev/tutorials/cross-compilation.html#choosing-the-host-platform-with-nix).
+
+> [!NOTE]\
+> To build dev or doc derivation (package) replace `out` with `dev` or `doc`.
+
 ## License
 
 This project is under the [MIT] license.
