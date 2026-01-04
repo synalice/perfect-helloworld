@@ -12,56 +12,56 @@ repos:
   - repo: local
     hooks:
       - id: clang-format
-        name: Format code with clang-format
+        name: format code with clang-format
         language: system
         entry: nix develop -c clang-format -i
         types_or: [c, header]
         pass_filenames: true
 
       - id: json-format
-        name: Format JSON files with jq
+        name: format JSON files with jq
         language: system
         entry: nix develop -c scripts/fmt_json.sh
         types_or: [json]
         pass_filenames: true
 
       - id: meson-format
-        name: Format meson.build files
+        name: format meson.build files
         language: system
         entry: nix develop -c meson format -i
         types_or: [meson]
         pass_filenames: true
 
       - id: nix-flake-check
-        name: Lint flake.nix
+        name: lint flake.nix
         language: system
         entry: nix develop -c nix flake check
         types_or: [nix]
         pass_filenames: false
 
       - id: nix-fmt
-        name: Format flake.nix
+        name: format flake.nix
         language: system
         entry: nix develop -c nix fmt
         types_or: [nix]
         pass_filenames: true
 
       - id: meson-setup
-        name: Setup builddir
+        name: setup builddir
         language: system
         entry: nix develop -c meson setup builddir/
         types_or: [c, header]
         pass_filenames: false
 
       - id: iwyu
-        name: Run IWYU tool
+        name: run IWYU tool
         language: system
         entry: nix develop -c iwyu_tool.py -p builddir/ -o clang -- -Xiwyu --error=1
         types_or: [c, header]
         pass_filenames: false
 
       - id: cppcheck
-        name: Run cppcheck
+        name: run cppcheck
         language: system
         entry: nix develop -c cppcheck
         args:
@@ -80,14 +80,14 @@ repos:
         pass_filenames: false
 
       - id: clang-tidy
-        name: Run clang-tidy
+        name: run clang-tidy
         language: system
         entry: nix develop -c ninja -C builddir/ clang-tidy
         types_or: [c, header]
         pass_filenames: false
 
       - id: reuse
-        name: Check compliance with REUSE Specification
+        name: check compliance with REUSE Specification
         language: system
         entry: nix develop -c reuse lint
         pass_filenames: false
