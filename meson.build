@@ -42,7 +42,6 @@ add_project_arguments(
     language: 'c',
 )
 
-
 subdir('include')
 subdir('src')
 subdir('docs')
