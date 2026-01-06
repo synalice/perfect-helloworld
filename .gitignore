@@ -8,5 +8,6 @@
 /result-dev
 /result-doc
 /doxygen-output
+/installroot
 
 /.direnv

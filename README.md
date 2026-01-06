@@ -79,6 +79,13 @@ To set up your development environment, run the following commands:
     ./builddir/src/cli/perfect-helloworld
     ```
 
+1. Install.
+
+    ```bash
+    meson install -C builddir/ --destdir ../installroot
+    tree installroot/
+    ```
+
 You are good to go!
 
 ### (Optional) Use direnv
