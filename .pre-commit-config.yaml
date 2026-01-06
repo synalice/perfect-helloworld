@@ -21,7 +21,7 @@ repos:
       - id: json-format
         name: format JSON files with jq
         language: system
-        entry: nix develop -c scripts/fmt_json.sh
+        entry: nix develop -c scripts/fmt-json.sh
         types_or: [json]
         pass_filenames: true
 
