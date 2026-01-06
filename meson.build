@@ -46,7 +46,6 @@ add_project_arguments(
 subdir('include')
 subdir('src')
 subdir('docs')
-subdir('tests')
 
 lib = library(
     meson.project_name(),
@@ -55,6 +54,8 @@ lib = library(
     include_directories: inc,
     version: meson.project_version(),
 )
+
+subdir('tests')
 
 pkgconfig.generate(
     lib,

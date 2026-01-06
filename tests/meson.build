@@ -9,7 +9,8 @@ if get_option('tests').enabled()
         'test-perfect-helloworld',
         executable(
             'test-perfect-helloworld',
-            sources: files('test-perfect-helloworld.c') + lib_sources,
+            sources: files('test-perfect-helloworld.c'),
+            link_with: lib,
             dependencies: unity,
             include_directories: inc,
         ),
