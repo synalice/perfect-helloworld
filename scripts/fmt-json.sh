@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# SPDX-FileCopyrightText: © 2025 Nikita Krasnov <nikita.nikita.krasnov@gmail.com>
+# SPDX-FileCopyrightText: © 2026 Nikita Krasnov <nikita.nikita.krasnov@gmail.com>
 #
 # SPDX-License-Identifier: MIT
 
