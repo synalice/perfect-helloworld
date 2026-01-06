@@ -125,6 +125,24 @@ To cross-compile the project, run this script:
 > [!TIP]\
 > To build the `dev` or `doc` derivation, replace `out` with `dev` or `doc`.
 
+## ASan/AddressSanitizer/Sanitizers
+
+To build the project with AddressSanitizer enabled configure the project like
+this:
+
+```bash
+meson setup -Db_sanitize=address,undefined,leak -Db_lundef=false builddir/
+```
+
+> [!NOTE]\
+> Without `-Db_lundef=false` Meson complains with the following warning message:
+>
+> ```text
+> WARNING: Trying to use ['address', 'undefined', 'leak'] sanitizer on Clang with b_lundef.
+> This will probably not work.
+> Try setting b_lundef to false instead.
+> ```
+
 ## Known issues
 
 - No cross-compilation in CI, as downloading cross toolchains from Nix binary

@@ -46,8 +46,10 @@ add_project_arguments(
     '-fstack-clash-protection',
     '-fstack-protector-strong',
     '-fstrict-flex-arrays=3',
-    '-U_FORTIFY_SOURCE',
-    '-D_FORTIFY_SOURCE=2',
+    ## Not enabled by default because FORTIFY_SOURCE may cause ASan to misbehave:
+    ## (see https://github.com/google/sanitizers/wiki/AddressSanitizer#faq for more info)
+    # '-U_FORTIFY_SOURCE',
+    # '-D_FORTIFY_SOURCE=2',
     language: 'c',
 )
 
