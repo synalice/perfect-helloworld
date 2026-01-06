@@ -12,7 +12,7 @@ project(
     default_options: [
         'warning_level=3',
         'buildtype=debugoptimized',
-        'c_std=c17',
+        'c_std=c23',
         'werror=true',
     ],
 )
