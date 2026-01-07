@@ -2,6 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
+#include <stdio.h>
 #include <unity.h>
 #include <unity_internals.h>
 
@@ -15,14 +16,16 @@ void tearDown(void) {
     // clean stuff up here
 }
 
-static void test_print_hello(void) {
-    print_hello();
+static void test_perfect_helloworld_print_hello_err(void) {
+    (void)fclose(stdout);
+    enum PERFECT_HELLOWORLD_RESULT res = perfect_helloworld_print_hello();
+    TEST_ASSERT_EQUAL(PERFECT_HELLOWORLD_RESULT_STDOUT_IO_ERROR, res);
 }
 
 int main(void) {
     UNITY_BEGIN();
 
-    RUN_TEST(test_print_hello);
+    RUN_TEST(test_perfect_helloworld_print_hello_err);
 
     return UNITY_END();
 }

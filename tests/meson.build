@@ -6,10 +6,21 @@ if get_option('tests').enabled()
     unity = dependency('unity', required: get_option('tests'))
 
     test(
-        'test-perfect-helloworld',
+        'test-perfect-helloworld-print-hello-ok',
         executable(
-            'test-perfect-helloworld',
-            sources: files('test-perfect-helloworld.c'),
+            'test-perfect-helloworld-print-hello-ok',
+            sources: files('test-perfect-helloworld-print-hello-ok.c'),
+            link_with: lib,
+            dependencies: unity,
+            include_directories: inc,
+        ),
+    )
+
+    test(
+        'test-perfect-helloworld-print-hello-err',
+        executable(
+            'test-perfect-helloworld-print-hello-err',
+            sources: files('test-perfect-helloworld-print-hello-err.c'),
             link_with: lib,
             dependencies: unity,
             include_directories: inc,

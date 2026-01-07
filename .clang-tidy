@@ -2,4 +2,15 @@
 #
 # SPDX-License-Identifier: MIT
 
-WarningsAsErrors: '*'
+WarningsAsErrors: "*"
+
+Checks:
+  - clang-diagnostic-*,
+  - bugprone-*,
+  - cert-*,
+  - concurrency-*,
+  - misc-*,
+  - mpi-*,
+  - clang-analyzer-*,
+  # Disabled because `fprintf_s` is not available on all platforms.
+  - -clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling
