@@ -5,6 +5,7 @@
 name: Project's CI
 on:
   workflow_dispatch:
+  pull_request:
   push:
     branches:
       - main
