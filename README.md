@@ -125,13 +125,12 @@ To cross-compile the project, run this script:
 > [!TIP]\
 > To build the `dev` or `doc` derivation, replace `out` with `dev` or `doc`.
 
-## ASan/AddressSanitizer/Sanitizers
+## AddressSanitizer aka ASan aka Sanitizers
 
-To build the project with AddressSanitizer enabled configure the project like
-this:
+To build the project with AddressSanitizer configure the project like this:
 
 ```bash
-meson setup -Db_sanitize=address,undefined,leak -Db_lundef=false builddir/
+meson setup --reconfigure -Db_sanitize=address,undefined,leak -Db_lundef=false builddir/
 ```
 
 > [!NOTE]\
