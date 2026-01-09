@@ -24,5 +24,8 @@ nix build -I nixpkgs=flake:nixpkgs --impure --expr "
 let
     pkgs = import <nixpkgs> {};
 in
-    (pkgs.pkgsCross.$1.callPackage ./nix/perfect-helloworld.nix {}).$2
+    (pkgs.pkgsCross.$1.callPackage ./nix/perfect-helloworld.nix {
+      withTests = false;
+      withDocs = false;
+    }).$2
 "

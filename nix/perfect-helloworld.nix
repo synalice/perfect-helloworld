@@ -10,6 +10,8 @@
   doxygen,
   pkg-config,
   unity-test,
+  withDocs ? true,
+  withTests ? true,
 }:
 stdenv.mkDerivation {
   pname = "perfect-helloworld";
@@ -17,7 +19,8 @@ stdenv.mkDerivation {
   src = ../.;
 
   mesonFlags = [
-    (lib.strings.mesonEnable "docs" true)
+    (lib.strings.mesonEnable "docs" withDocs)
+    (lib.strings.mesonEnable "tests" withTests)
   ];
 
   doCheck = true;
@@ -25,8 +28,8 @@ stdenv.mkDerivation {
   outputs = [
     "out"
     "dev"
-    "doc"
-  ];
+  ]
+  ++ lib.optional withDocs "doc";
 
   nativeBuildInputs = [
     meson
@@ -35,9 +38,7 @@ stdenv.mkDerivation {
     pkg-config
   ];
 
-  buildInputs = [
-    unity-test
-  ];
+  buildInputs = [ ] ++ lib.optional withTests unity-test;
 
   meta = {
     homepage = "https://github.com/synalice/perfect-helloworld";

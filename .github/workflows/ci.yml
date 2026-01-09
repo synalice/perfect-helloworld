@@ -62,11 +62,6 @@ jobs:
           ./scripts/cross-compile.sh aarch64-multiplatform dev
           tree result-dev/
 
-      - name: Cross-compile $doc
-        run: |
-          ./scripts/cross-compile.sh aarch64-multiplatform doc
-          tree result-doc/
-
   run-pre-commit-hooks:
     name: Run pre-commit hooks
     runs-on: ubuntu-latest
