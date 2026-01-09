@@ -43,71 +43,38 @@ lightweight alternative to [pre-commit](https://pre-commit.com/)):
 - [REUSE](https://reuse.software/)
 - [jq](https://jqlang.org/) (for JSON formatting);
 
-## Getting started
+## Building from source
 
-To set up your development environment, run the following commands:
+```bash
+git clone https://github.com/synalice/perfect-helloworld
+cd perfect-helloworld
+meson setup builddir/
+meson compile -C builddir/
+meson install -C builddir/
+```
 
-1. Install [Nix](https://nixos.org/download).
-1. Clone the repository and cd into the project directory.
+## Building with Nix
 
-    ```bash
-    git clone https://github.com/synalice/perfect-helloworld
-    cd perfect-helloworld
-    ```
+```bash
+git clone https://github.com/synalice/perfect-helloworld
+cd perfect-helloworld
+nix build .#default.out
+nix build .#default.dev
+nix build .#default.doc
+```
 
-1. Enter Nix `devShell` (installs the toolchain and dependencies).
+## Using Nix `devShell`
 
-    ```bash
-    nix develop
-    ```
+Nix can automatically install all dependencies, toolchain and setup the whole
+development environment. To do that run
 
-1. Setup Meson `builddir/`.
-
-    ```bash
-    meson setup builddir/
-    ```
-
-1. Build the project.
-
-    ```bash
-    meson compile -C builddir/
-    ```
-
-1. Run the executable.
-
-    ```bash
-    ./builddir/src/cli/perfect-helloworld
-    ```
-
-1. Install.
-
-    ```bash
-    meson install -C builddir/ --destdir ../installroot
-    tree installroot/
-    ```
-
-You are good to go!
-
-### (Optional) Use direnv
-
-1. Install [direnv](https://direnv.net/).
-1. cd into the project directory.
-
-    ```bash
-    cd perfect-helloworld
-    ```
-
-1. Enable direnv.
-
-    ```bash
-    direnv allow
-    ```
-
-Now `nix develop` will run automatically when you cd into the project directory!
+```bash
+nix develop
+```
 
 ## Cross-compilation
 
-To cross-compile the project, run this script:
+To cross-compile the project, run this script
 
 ```bash
 ./scripts/cross-compile.sh aarch64-multiplatform out
@@ -127,7 +94,7 @@ To cross-compile the project, run this script:
 
 ## AddressSanitizer aka ASan aka Sanitizers
 
-To build the project with AddressSanitizer configure the project like this:
+To build the project with AddressSanitizer configure the project like this
 
 ```bash
 meson setup --reconfigure -Db_sanitize=address,undefined,leak -Db_lundef=false builddir/
