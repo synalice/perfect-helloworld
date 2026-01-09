@@ -12,9 +12,16 @@ on:
       - dev
 
 jobs:
-  build-native-x86_64:
-    name: "Native build: x86_64-linux"
-    runs-on: ubuntu-24.04
+  build-native:
+    strategy:
+      matrix:
+        include:
+          - arch: x86_64-linux
+            os: ubuntu-24.04
+          - arch: aarch64-linux
+            os: ubuntu-24.04-arm
+    name: "Native build: ${{ matrix.arch }}"
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
 
@@ -23,41 +30,17 @@ jobs:
 
       - name: Build $out output
         run: |
-          nix build .#packages.x86_64-linux.default
+          nix build .#packages.${{ matrix.arch }}.default
           tree result
 
       - name: Build $dev output
         run: |
-          nix build .#packages.x86_64-linux.default.dev
+          nix build .#packages.${{ matrix.arch }}.default.dev
           tree result-dev
 
       - name: Build $doc output
         run: |
-          nix build .#packages.x86_64-linux.default.doc
-          tree result-doc
-
-  build-native-aarch64:
-    name: "Native build: aarch64-linux"
-    runs-on: ubuntu-24.04-arm
-    steps:
-      - uses: actions/checkout@v5
-
-      - name: Setup Nix
-        uses: ./.github/actions/nix-setup
-
-      - name: Build $out output
-        run: |
-          nix build .#packages.aarch64-linux.default
-          tree result
-
-      - name: Build $dev output
-        run: |
-          nix build .#packages.aarch64-linux.default.dev
-          tree result-dev
-
-      - name: Build $doc output
-        run: |
-          nix build .#packages.aarch64-linux.default.doc
+          nix build .#packages.${{ matrix.arch }}.default.doc
           tree result-doc
 
   run-pre-commit-hooks:
