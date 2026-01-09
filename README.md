@@ -142,11 +142,6 @@ meson setup --reconfigure -Db_sanitize=address,undefined,leak -Db_lundef=false b
 > Try setting b_lundef to false instead.
 > ```
 
-## Known issues
-
-- No cross-compilation in CI, as downloading cross toolchains from Nix binary
-  caches significantly increases CI time.
-
 ## License
 
 This project is under the [MIT](https://opensource.org/license/mit) license.

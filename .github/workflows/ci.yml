@@ -43,6 +43,30 @@ jobs:
           nix build .#packages.${{ matrix.arch }}.default.doc
           tree result-doc
 
+  cross-compile:
+    runs-on: ubuntu-24.04
+    name: "Cross-compile: x86_64-linux -> aarch64-linux"
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup Nix
+        uses: ./.github/actions/nix-setup
+
+      - name: Cross-compile $out
+        run: |
+          ./scripts/cross-compile.sh aarch64-multiplatform out
+          tree result/
+
+      - name: Cross-compile $dev
+        run: |
+          ./scripts/cross-compile.sh aarch64-multiplatform dev
+          tree result-dev/
+
+      - name: Cross-compile $doc
+        run: |
+          ./scripts/cross-compile.sh aarch64-multiplatform doc
+          tree result-doc/
+
   run-pre-commit-hooks:
     name: Run pre-commit hooks
     runs-on: ubuntu-latest
