@@ -6,21 +6,19 @@
 
 set -o errexit
 set -o pipefail
-
-echoerr() { printf "$(tput bold)$(tput setaf 1)ERROR:$(tput sgr0) %s\n" "$*" >&2; }
-
-if [[ $# -eq 0 ]]; then
-    echoerr 'Please provide cross architecture (`aarch64-multiplatform` or `riscv64`) and desired output (`out`, `dev` or `doc`).'
-    exit 1
-elif [[ $# -eq 1 ]]; then
-    echoerr 'Please specify desired output (`out`, `dev` or `doc`).'
-    exit 1
-elif [[ $# -gt 2 ]]; then
-    echoerr "More than two arguments provided."
-    exit 1
-fi
-
 set -o nounset
+
+usage() {
+  cat >&2 <<EOF
+Usage: $0 <arch> <out|dev|doc>
+
+  arch     cross architecture (aarch64-multiplatform, riscv64, etc.)
+  output   desired output (out, dev, doc)
+EOF
+  exit 1
+}
+
+(( $# == 2 )) || usage
 
 nix build -I nixpkgs=flake:nixpkgs --impure --expr "
 let
