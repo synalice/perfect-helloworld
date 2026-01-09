@@ -24,7 +24,7 @@
       {
         formatter = pkgs.nixfmt-rfc-style;
 
-        packages.default = pkgs.callPackage ./nix/perfect-helloworld.nix { };
+        packages.default = pkgs.callPackage ./nix/perfect-helloworld.nix { stdenv = pkgs.clangStdenv; };
 
         devShells.default =
           pkgs.mkShell.override

@@ -4,14 +4,14 @@
 
 {
   lib,
-  clangStdenv,
+  stdenv,
   meson,
   ninja,
   doxygen,
   pkg-config,
   unity-test,
 }:
-clangStdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "perfect-helloworld";
   version = "0.1.0";
   src = ../.;
